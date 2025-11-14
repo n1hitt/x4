@@ -1436,15 +1436,13 @@ do
 
 local Inner = Library:Create('Frame', {
     BackgroundColor3 = Library.MainColor;
-    BorderColor3 = Library.AccentColor;
-    BorderMode = Enum.BorderMode.Inset;
+    BorderSizePixel = 0; -- Remove border
     Position = UDim2.new(0, 1, 0, 1);
     Size = UDim2.new(1, -2, 1, -2);
     ZIndex = 1;
     Parent = Outer;
 });
 
--- Add this right after the Inner frame creation:
 Library:Create('UICorner', {
     CornerRadius = UDim.new(0, 6),
     Parent = Inner
@@ -2977,7 +2975,6 @@ local Outer = Library:Create('Frame', {
     Parent = ScreenGui;
 });
 
--- Add this right after the Outer frame creation:
 Library:Create('UICorner', {
     CornerRadius = UDim.new(0, 8),
     Parent = Outer
@@ -3009,14 +3006,14 @@ Library:Create('UICorner', {
         Parent = Inner;
     });
 
-    local MainSectionOuter = Library:Create('Frame', {
-        BackgroundColor3 = Library.BackgroundColor;
-        BorderColor3 = Library.OutlineColor;
-        Position = UDim2.new(0, 8, 0, 25);
-        Size = UDim2.new(1, -16, 1, -33);
-        ZIndex = 1;
-        Parent = Inner;
-    });
+local MainSectionOuter = Library:Create('Frame', {
+    BackgroundColor3 = Library.BackgroundColor;
+    BorderSizePixel = 0; -- Remove border
+    Position = UDim2.new(0, 8, 0, 25);
+    Size = UDim2.new(1, -16, 1, -33);
+    ZIndex = 1;
+    Parent = Inner;
+});
 
     Library:AddToRegistry(MainSectionOuter, {
         BackgroundColor3 = 'BackgroundColor';
