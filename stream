@@ -1434,19 +1434,14 @@ do
                 ZIndex = 5;
             });
 
-local Inner = Library:Create('Frame', {
-    BackgroundColor3 = Library.MainColor;
-    BorderSizePixel = 0; -- Remove border
-    Position = UDim2.new(0, 1, 0, 1);
-    Size = UDim2.new(1, -2, 1, -2);
-    ZIndex = 1;
-    Parent = Outer;
-});
-
-Library:Create('UICorner', {
-    CornerRadius = UDim.new(0, 6),
-    Parent = Inner
-});
+            local Inner = Library:Create('Frame', {
+                BackgroundColor3 = Library.MainColor;
+                BorderColor3 = Library.OutlineColor;
+                BorderMode = Enum.BorderMode.Inset;
+                Size = UDim2.new(1, 0, 1, 0);
+                ZIndex = 6;
+                Parent = Outer;
+            });
 
             local Label = Library:CreateLabel({
                 Size = UDim2.new(1, 0, 1, 0);
@@ -2953,7 +2948,7 @@ function Library:CreateWindow(...)
     if type(Config.MenuFadeTime) ~= 'number' then Config.MenuFadeTime = 0.2 end
 
     if typeof(Config.Position) ~= 'UDim2' then Config.Position = UDim2.fromOffset(175, 50) end
-    if typeof(Config.Size) ~= 'UDim2' then Config.Size = UDim2.fromOffset(550, 600) end
+    if typeof(Config.Size) ~= 'UDim2' then Config.Size = UDim2.fromOffset(550, 450) end
 
     if Config.Center then
         Config.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2964,21 +2959,16 @@ function Library:CreateWindow(...)
         Tabs = {};
     };
 
-local Outer = Library:Create('Frame', {
-    AnchorPoint = Config.AnchorPoint,
-    BackgroundColor3 = Color3.new(0, 0, 0);
-    BorderSizePixel = 0;
-    Position = Config.Position,
-    Size = Config.Size,
-    Visible = false;
-    ZIndex = 1;
-    Parent = ScreenGui;
-});
-
-Library:Create('UICorner', {
-    CornerRadius = UDim.new(0, 8),
-    Parent = Outer
-});
+    local Outer = Library:Create('Frame', {
+        AnchorPoint = Config.AnchorPoint,
+        BackgroundColor3 = Color3.new(0, 0, 0);
+        BorderSizePixel = 0;
+        Position = Config.Position,
+        Size = Config.Size,
+        Visible = false;
+        ZIndex = 1;
+        Parent = ScreenGui;
+    });
 
     Library:MakeDraggable(Outer, 25);
 
@@ -3006,14 +2996,14 @@ Library:Create('UICorner', {
         Parent = Inner;
     });
 
-local MainSectionOuter = Library:Create('Frame', {
-    BackgroundColor3 = Library.BackgroundColor;
-    BorderSizePixel = 0; -- Remove border
-    Position = UDim2.new(0, 8, 0, 25);
-    Size = UDim2.new(1, -16, 1, -33);
-    ZIndex = 1;
-    Parent = Inner;
-});
+    local MainSectionOuter = Library:Create('Frame', {
+        BackgroundColor3 = Library.BackgroundColor;
+        BorderColor3 = Library.OutlineColor;
+        Position = UDim2.new(0, 8, 0, 25);
+        Size = UDim2.new(1, -16, 1, -33);
+        ZIndex = 1;
+        Parent = Inner;
+    });
 
     Library:AddToRegistry(MainSectionOuter, {
         BackgroundColor3 = 'BackgroundColor';
@@ -3029,11 +3019,6 @@ local MainSectionOuter = Library:Create('Frame', {
         ZIndex = 1;
         Parent = MainSectionOuter;
     });
-
-    Library:Create('UICorner', {
-    CornerRadius = UDim.new(0, 4),
-    Parent = MainSectionInner
-});
 
     Library:AddToRegistry(MainSectionInner, {
         BackgroundColor3 = 'BackgroundColor';
