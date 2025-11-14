@@ -3033,6 +3033,11 @@ Library:Create('UICorner', {
         Parent = MainSectionOuter;
     });
 
+    Library:Create('UICorner', {
+    CornerRadius = UDim.new(0, 4),
+    Parent = MainSectionInner
+});
+
     Library:AddToRegistry(MainSectionInner, {
         BackgroundColor3 = 'BackgroundColor';
     });
